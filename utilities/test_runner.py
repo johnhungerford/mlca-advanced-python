@@ -44,11 +44,13 @@ class TestRunner(abc.ABC):
             time_elapsed_ms = (end_time - start_time) * 1000
 
             if passed:
-                print(f'  {i}: \033[1;32m Passed!\033[0m ({time_elapsed_ms} milliseconds)')
+                print(f'  {i}: \033[1;32mPassed!\033[0m ({time_elapsed_ms} milliseconds)')
             else:
-                print(f'  {i}: \033[1;31m Failed!\033[0m\n')
+                print(f'  {i}: \033[1;31mFailed!\033[0m\n')
                 for msg_line in msg:
                     print(f'      {msg_line}')
                 print('')
 
             i += 1
+
+        print('')

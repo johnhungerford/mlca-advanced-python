@@ -5,7 +5,7 @@ from typing import List
 from utilities.test_runner import TestRunner
 
 
-def find_target_index(nums: List[int], target: int) -> int:
+def find_value_index(nums: List[int], target: int) -> int:
     """This function searches a *sorted* list of numbers (ascending order) for a
        target value. If it finds the value it returns its index. If it does not
        find the value, it returns the index where that value would be if it were in the list"""
@@ -16,7 +16,7 @@ class Runner(TestRunner):
     def run_function(self, test_case: dict):
         nums = test_case['nums']
         target = test_case['target']
-        find_target_index(nums, target)
+        find_value_index(nums, target)
 
 
 test_cases = [
