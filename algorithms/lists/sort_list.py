@@ -3,6 +3,7 @@ from typing import List
 from utilities.test_runner import TestRunner
 
 
+# Copy this function
 def sort_list(nums: List[int]) -> List[int]:
     """Return the same list of integers, sorted in ascending order. Identical numbers should be
        grouped together and not deduplicated."""
@@ -28,13 +29,4 @@ test_cases = [
     },
 ]
 
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        nums = test_case['nums']
-        return sort_list(nums)
-
-
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_sort_list = TestRunner(test_cases=test_cases, arg_extractor=lambda case: [case['nums']])

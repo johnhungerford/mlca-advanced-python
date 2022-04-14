@@ -1,23 +1,14 @@
-import sys
-import time
 from typing import List
 
 from utilities.test_runner import TestRunner
 
 
+# Copy this function
 def find_value_index(nums: List[int], target: int) -> int:
     """This function searches a *sorted* list of numbers (ascending order) for a
        target value. If it finds the value it returns its index. If it does not
        find the value, it returns the index where that value would be if it were in the list"""
     pass
-
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        nums = test_case['nums']
-        target = test_case['target']
-        find_value_index(nums, target)
-
 
 test_cases = [
     {
@@ -37,7 +28,5 @@ test_cases = [
     },
 ]
 
-
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_find_value_index = TestRunner(test_cases=test_cases,
+                                   arg_extractor=lambda case: [case['nums'], case['target']])

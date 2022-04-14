@@ -3,6 +3,7 @@ from typing import List, Any, Optional
 from utilities.test_runner import TestRunner
 
 
+# Copy this function
 def validate_brackets(expression: str) -> bool:
     """
     Given a string containing, among other characters, '[', ']', '{', '}', '(',
@@ -15,12 +16,6 @@ def validate_brackets(expression: str) -> bool:
        is not valid.
     """
     pass
-
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        expression = test_case['expression']
-        return validate_brackets(expression)
 
 test_cases = [
     {
@@ -49,6 +44,4 @@ test_cases = [
     },
 ]
 
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_validate_brackets = TestRunner(test_cases=test_cases, arg_extractor=lambda case: [case['expression']])

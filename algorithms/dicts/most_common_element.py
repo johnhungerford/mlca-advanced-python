@@ -2,7 +2,7 @@ from typing import List, Any
 
 from utilities.test_runner import TestRunner
 
-
+# Copy this function definition
 def most_common_element(elements: List[Any]) -> List[Any]:
     """
     In a list of values of a given type (any type that can be compared with ==), return
@@ -11,15 +11,6 @@ def most_common_element(elements: List[Any]) -> List[Any]:
     or [3, 0].
     """
     return [None]
-
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        elements = test_case['elements']
-        return most_common_element(elements)
-
-    def compare_result(self, actual, expected) -> bool:
-        return set(actual) == set(expected)
 
 
 test_cases = [
@@ -41,6 +32,5 @@ test_cases = [
     },
 ]
 
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_most_common_element = TestRunner(test_cases=test_cases,
+                                      arg_extractor=lambda dict: [dict['elements']])

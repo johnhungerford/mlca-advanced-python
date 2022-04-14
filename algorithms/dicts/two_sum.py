@@ -1,25 +1,15 @@
-from typing import List
+from typing import List, Tuple
 
 from utilities.test_runner import TestRunner
 
-
-def two_sum(nums: List[int], target: int) -> (int, int):
+# Copy this function
+def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
     """
     Find two elements in a list of integers (nums) that add up to given target integer (target).
     Assume that there will only be one pair of integers that adds up to the target. Return the
     indices of the two elements in any order.
     """
     return None, None
-
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        nums = test_case['nums']
-        target = test_case['target']
-        return two_sum(nums, target)
-
-    def compare_result(self, actual, expected) -> bool:
-        return set(actual) == set(expected)
 
 
 test_cases = [
@@ -60,6 +50,6 @@ test_cases = [
     },
 ]
 
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_two_sum = TestRunner(test_cases=test_cases,
+                          evaluator=lambda a, e: set(a) == set(e),
+                          arg_extractor=lambda dict: [dict['nums'], dict['target']])

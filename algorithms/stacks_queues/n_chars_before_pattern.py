@@ -4,6 +4,7 @@ from typing import Any, List
 from utilities.test_runner import TestRunner
 
 
+# Copy this function
 def n_chars_before_pattern(text: str, pattern: str, n: int) -> str:
     """
     Given a string (text), return the substring of a given length (n) leading up to the first
@@ -15,13 +16,6 @@ def n_chars_before_pattern(text: str, pattern: str, n: int) -> str:
     """
     pass
 
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        text = test_case['text']
-        pattern = test_case['pattern']
-        n = test_case['n']
-        return n_chars_before_pattern(text, pattern, n)
 
 test_cases = [
     {
@@ -38,6 +32,5 @@ test_cases = [
     }
 ]
 
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_n_chars_before_pattern = TestRunner(test_cases=test_cases,
+                                         arg_extractor=lambda case: [case['text'], case['pattern'], case['n']])

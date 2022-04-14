@@ -1,9 +1,10 @@
-from typing import List
+from typing import List, Tuple
 
 from utilities.test_runner import TestRunner
 
 
-def greatest_difference(nums: List[int]) -> (int, int):
+# Copy this function
+def greatest_difference(nums: List[int]) -> Tuple[int, int]:
     """Find the two indices that have the greatest difference between them. If there are multiple
        pairs with the greatest difference, return the *lowest two*. Return the indices as a tuple
        in ascending order (e.g., (3, 5), not (5, 3))"""
@@ -26,13 +27,5 @@ test_cases = [
 
 ]
 
-
-class Runner(TestRunner):
-    def run_function(self, test_case: dict):
-        nums = test_case['nums']
-        return greatest_difference(nums)
-
-
-if __name__ == '__main__':
-    test_runner = Runner(test_cases)
-    test_runner.run_tests()
+test_greatest_difference = TestRunner(test_cases=test_cases,
+                                      arg_extractor=lambda case: [case['nums']])
