@@ -24,10 +24,10 @@ jobs:
           echo ${{ github.head_ref }}
           pip install -r requirements.txt
       - name: "Test Marshall's assignments"
-        if: ${{ github.head_ref == 'refs/heads/marshall-assignments' }}
+        if: ${{ github.head_ref == 'marshall-assignments' }}
         run: python marshall-solutions/most_common_element_impl.py
       - name: "Test Ronan's assignments"
-        if: ${{ github.head_ref == 'refs/heads/ronan-assignments' }}
+        if: ${{ github.head_ref == 'ronan-assignments' }}
         run: python ronan-solutions/most_common_element_impl.py
       - name: Run project tests
         run: pytest
