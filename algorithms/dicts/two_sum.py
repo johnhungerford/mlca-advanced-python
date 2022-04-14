@@ -43,11 +43,11 @@ test_cases = [
         'target': 39999,
         'expected': (19999, 20000),
     },
-    {
-        'nums': [i for i in range(0, 1000001)],
-        'target': 1999999,
-        'expected': (999999, 1000000),
-    },
+    # {
+    #     'nums': [i for i in range(0, 1000001)],
+    #     'target': 1999999,
+    #     'expected': (999999, 1000000),
+    # },
 ]
 
 test_two_sum = TestRunner(test_cases=test_cases,
