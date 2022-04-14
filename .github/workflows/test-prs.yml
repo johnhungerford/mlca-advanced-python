@@ -20,7 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "Retrieve dependencies"
-        run: pip install -r requirements.txt
+        run: |
+          echo $PYTHONPATH
+          pip install -r requirements.txt
       - name: "Test Marshall's assignments"
         if: ${{ github.head_ref == 'marshall-assignments' }}
         run: python marshall_solutions/two_sum_impl.py
