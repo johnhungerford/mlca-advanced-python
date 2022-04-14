@@ -21,13 +21,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: "Retrieve dependencies"
         run: |
-          echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
           pip install -r requirements.txt
       - name: "Test Marshall's assignments"
-        if: ${{ github.ref == 'refs/heads/marshall-assignments' }}
+        if: ${{ github.head_ref == 'refs/heads/marshall-assignments' }}
         run: python marshall-solutions/most_common_element_impl.py
       - name: "Test Ronan's assignments"
-        if: ${{ github.ref == 'refs/heads/ronan-assignments' }}
+        if: ${{ github.head_ref == 'refs/heads/ronan-assignments' }}
         run: python ronan-solutions/most_common_element_impl.py
       - name: Run project tests
         run: pytest
