@@ -1,4 +1,4 @@
-from typing import List, Any, Optional
+from typing import List, Any
 
 from utilities.test_runner import TestRunner
 

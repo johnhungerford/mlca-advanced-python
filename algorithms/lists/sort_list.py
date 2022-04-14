@@ -5,7 +5,7 @@ from utilities.test_runner import TestRunner
 
 def sort_list(nums: List[int]) -> List[int]:
     """Return the same list of integers, sorted in ascending order. Identical numbers should be
-       grouped togehter and not deduplicated."""
+       grouped together and not deduplicated."""
     pass
 
 
