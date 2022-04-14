@@ -1,6 +1,8 @@
 import abc
 import time
 
+from colorama import init
+
 
 class TestRunner(abc.ABC):
     """A class for testing functions using test data"""
@@ -22,6 +24,7 @@ class TestRunner(abc.ABC):
         return actual == expected
 
     def run_tests(self) -> None:
+        init()
         i = 1
         print('\n  *****************\n  * Running Tests *\n  *****************\n')
         for case in self.__test_cases:
