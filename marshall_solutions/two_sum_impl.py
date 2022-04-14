@@ -9,6 +9,7 @@ def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
     indices of the two elements in any order.
     """
     # return None, None
+    
     for i, i_val in enumerate(nums):
         for j in range(i + 1, len(nums)):
             j_val = nums[j]
