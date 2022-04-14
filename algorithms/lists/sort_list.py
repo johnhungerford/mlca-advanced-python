@@ -1,6 +1,6 @@
 from typing import List
 
-from utilities.test_runner import TestRunner
+from utilities.tests_runner import TestRunner
 
 
 # Copy this function
