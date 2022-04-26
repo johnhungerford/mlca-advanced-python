@@ -1,5 +1,6 @@
 from ast import Call
 import time
+import sys
 from typing import Callable, Any, List, Optional
 
 from colorama import init, deinit
@@ -92,6 +93,7 @@ class TestRunner:
 
         init()
         i = 1
+        failed = False
         print('\n  *****************\n  * Running Tests *\n  *****************\n')
         for case in self.__test_cases:
             start_time = time.time()
@@ -116,6 +118,7 @@ class TestRunner:
             if passed:
                 print(f'  {i}: \033[1;32mPassed!\033[0m ({time_elapsed_ms} milliseconds)')
             else:
+                failed = True
                 print(f'  {i}: \033[1;31mFailed!\033[0m\n')
                 for msg_line in msg:
                     print(f'      {msg_line}')
@@ -128,3 +131,5 @@ class TestRunner:
 
         deinit()
         print('')
+        if failed:
+            sys.exit(10)
