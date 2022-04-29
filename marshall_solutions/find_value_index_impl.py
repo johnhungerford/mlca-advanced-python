@@ -19,7 +19,6 @@ def find_value_index(nums: List[int], target: int) -> int:
             if nums[idx] == target:
                 return idx
         
-    
 
 
 test_find_value_index.run_on(find_value_index)
