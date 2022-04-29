@@ -8,6 +8,9 @@ def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
     Assume that there will only be one pair of integers that adds up to the target. Return the
     indices of the two elements in any order.
     """
-    return None, None
+    for x in range(len(nums)):     
+        for y in range(x, len(nums)):        
+            if nums[x] + nums[y] == target:                
+                return x, y
 
 test_two_sum.run_on(two_sum)
