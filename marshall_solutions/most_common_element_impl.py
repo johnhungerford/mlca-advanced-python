@@ -8,6 +8,26 @@ def most_common_element(elements: List[Any]) -> List[Any]:
     there are three 0s, three 3s, two 2s, one 1 and one 4, so the correct solution is [0, 3]
     or [3, 0].
     """
-    return [None]
+    vals = {}
+    most_common = 0
+    list_vals = []
+    
+    for element in elements:
+        if element in vals:
+            vals[element] += 1
+            
+        else:
+            vals[element] = 1
+
+    for element in vals:
+        if vals[element] > most_common:
+            most_common = vals[element]
+            list_vals = [element]
+            
+        elif vals[element] == most_common:
+            list_vals.append(element)         
+                       
+            
+    return list_vals
 
 test_most_common_element.run_on(most_common_element)

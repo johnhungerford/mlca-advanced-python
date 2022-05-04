@@ -28,9 +28,15 @@ jobs:
           pip install -r requirements.txt
       - name: "Test Marshall's assignments"
         if: ${{ github.head_ref == 'marshall-assignments' }}
-        run: python marshall_solutions/most_common_element_impl.py
+        run: |
+          python marshall_solutions/most_common_element_impl.py
+          python marshall_solutions/two_sum_impl.py
+          python marshall_solutions/find_value_index_impl.py
       - name: "Test Ronan's assignments"
         if: ${{ github.head_ref == 'ronan-assignments' }}
-        run: python ronan_solutions/most_common_element_impl.py
+        run: |
+          python ronan_solutions/most_common_element_impl.py
+          python ronan_solutions/two_sum_impl.py
+          python ronan_solutions/find_value_index_impl.py
       - name: Run project tests
         run: pytest
