@@ -9,14 +9,14 @@ def find_value_index(nums: List[int], target: int) -> int:
        find the value, it returns the index where that value would be if it were in the list"""
 
     if target > nums[-1]:
-        return len(nums) +  target - nums[-1]
+        return len(nums) 
 
     elif target < nums[0]:
-        return target - nums[0] 
+        return 0
 
     else:
         for idx in range(len(nums) - 1):
-            if nums[idx] == target:
+            if nums[idx] >= target:
                 return idx
         
 

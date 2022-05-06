@@ -1,23 +1,22 @@
-from typing import List
+from typing import List, Tuple
+from algorithms.dicts.two_sum import test_two_sum
 
-from algorithms.lists.find_value_index import test_find_value_index
+# Copy this function
+def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
+    """
+    Find two elements in a list of integers (nums) that add up to given target integer (target).
+    Assume that there will only be one pair of integers that adds up to the target. Return the
+    indices of the two elements in any order.
+    """
 
+    nums_dict = {}
+    for idx in range(len(nums)):
+        nums_dict[nums[idx]] = idx
 
-def find_value_index(nums: List[int], target: int) -> int:
-    """This function searches a *sorted* list of numbers (ascending order) for a
-       target value. If it finds the value it returns its index. If it does not
-       find the value, it returns the index where that value would be if it were in the list"""
+    for n in nums:
+        if target - n in nums_dict:
+            return n, nums_dict[target - n]
+    
 
-    if target > nums[-1]:
-        return len(nums) +  target - nums[-1]
+test_two_sum.run_on(two_sum)
 
-    elif target < nums[0]:
-        return target - nums[0] 
-
-    else:
-        for idx in range(len(nums) - 1):
-            if nums[idx] == target:
-                return idx
-        
-
-test_find_value_index.run_on(find_value_index)
