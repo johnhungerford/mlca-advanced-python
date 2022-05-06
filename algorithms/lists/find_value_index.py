@@ -26,6 +26,12 @@ test_cases = [
         'target': 11,
         'expected': 5,
     },
+    {
+        'nums': list(range(0, 10000000)),
+        'target': 9999998,
+        'expected': 9999998,
+        'timeout': 1,
+    },
 ]
 
 test_find_value_index = TestRunner(test_cases=test_cases,

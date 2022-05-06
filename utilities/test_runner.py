@@ -115,6 +115,10 @@ class TestRunner:
             end_time = time.time()
             time_elapsed_ms = (end_time - start_time) * 1000
 
+            if passed and 'timeout' in case and case['timeout'] < time_elapsed_ms:
+                passed = False
+                msg = [f'Timed out!', f'Took: {time_elapsed_ms}', f'Max allowed time: {case["timeout"]}']
+
             if passed:
                 print(f'  {i}: \033[1;32mPassed!\033[0m ({time_elapsed_ms} milliseconds)')
             else:
