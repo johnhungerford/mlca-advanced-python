@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 
 # Copy this function
@@ -27,5 +27,5 @@ test_cases = [
 
 ]
 
-test_greatest_difference = TestRunner(test_cases=test_cases,
-                                      arg_extractor=lambda case: [case['nums']])
+test_greatest_difference = TstRunner(test_cases=test_cases,
+                                     arg_extractor=lambda case: [case['nums']])

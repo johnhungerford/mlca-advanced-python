@@ -1,7 +1,7 @@
 from queue import Queue
 from typing import Any, List
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 
 # Copy this function
@@ -32,5 +32,5 @@ test_cases = [
     }
 ]
 
-test_n_chars_before_pattern = TestRunner(test_cases=test_cases,
-                                         arg_extractor=lambda case: [case['text'], case['pattern'], case['n']])
+test_n_chars_before_pattern = TstRunner(test_cases=test_cases,
+                                        arg_extractor=lambda case: [case['text'], case['pattern'], case['n']])
