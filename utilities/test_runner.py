@@ -5,11 +5,11 @@ from typing import Callable, Any, List, Optional
 
 from colorama import init, deinit
 
-class TestRunnerException(Exception):
+class TstRunnerException(Exception):
     pass
 
 
-class TestRunner:
+class TstRunner:
     """A class for testing functions using test data"""
 
     __run_all: bool = True
@@ -29,45 +29,45 @@ class TestRunner:
         self.__extract_args = arg_extractor
         self.__target_fn = fn
 
-    def add_test(self, test_case: dict[str, Any]) -> 'TestRunner':
+    def add_test(self, test_case: dict[str, Any]) -> 'TstRunner':
         self.__test_cases.append(test_case)
         return self
     
-    def add_tests(self, test_cases: List[dict[str, Any]]) -> 'TestRunner':
+    def add_tests(self, test_cases: List[dict[str, Any]]) -> 'TstRunner':
         self.__test_cases.extend(test_cases)
         return self
     
-    def clear_tests(self) -> 'TestRunner':
+    def clear_tests(self) -> 'TstRunner':
         self.__test_cases = []
         return self
     
-    def use_extractor(self, extractor: Callable[[dict[str, Any]], Any]) -> 'TestRunner':
+    def use_extractor(self, extractor: Callable[[dict[str, Any]], Any]) -> 'TstRunner':
         self.__extract_args = extractor
         return self
     
-    def clear_extractor(self) -> 'TestRunner':
+    def clear_extractor(self) -> 'TstRunner':
         self.__extract_args = None
         return self
     
-    def target_function(self, fn: Callable) -> 'TestRunner':
+    def target_function(self, fn: Callable) -> 'TstRunner':
         self.__target_fn = fn
         return self
     
-    def clear_target_fn(self) -> 'TestRunner':
+    def clear_target_fn(self) -> 'TstRunner':
         self.__target_fn = None
         return self
 
-    def use_evaluator(self, evaluator: Callable[[Any, Any], bool]) -> 'TestRunner':
+    def use_evaluator(self, evaluator: Callable[[Any, Any], bool]) -> 'TstRunner':
         self.__evaluate_results = evaluator
         return self
 
-    def clear_evaluator(self) -> 'TestRunner':
+    def clear_evaluator(self) -> 'TstRunner':
         self.__evaluate_results = None
         return self
 
     def run_tests(self) -> None:
         if self.__test_cases is None or self.__evaluate_results is None or self.__run_impl is None:
-            raise TestRunnerException('test_cases, evaluator, and runner must be defined to run tests')
+            raise TstRunnerException('test_cases, evaluator, and runner must be defined to run tests')
         
         self.__run_tests(self.__test_cases, self.__evaluate_results, self.__run_impl)
 
@@ -89,7 +89,7 @@ class TestRunner:
                 msgs.append('extractor is None')
             if target_fn is None:
                 msgs.append('target function is None')
-            raise TestRunnerException('test cases, evaluator, extractor, and target function must be defined to run tests: ' + '; '.join(msgs))
+            raise TstRunnerException('test cases, evaluator, extractor, and target function must be defined to run tests: ' + '; '.join(msgs))
 
         init()
         i = 1

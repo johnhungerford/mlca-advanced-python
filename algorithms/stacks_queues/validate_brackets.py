@@ -1,6 +1,6 @@
 from typing import List, Any, Optional
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 
 # Copy this function
@@ -44,4 +44,4 @@ test_cases = [
     },
 ]
 
-test_validate_brackets = TestRunner(test_cases=test_cases, arg_extractor=lambda case: [case['expression']])
+test_validate_brackets = TstRunner(test_cases=test_cases, arg_extractor=lambda case: [case['expression']])
