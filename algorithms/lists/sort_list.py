@@ -1,6 +1,6 @@
 from typing import List
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 
 # Copy this function
@@ -29,4 +29,4 @@ test_cases = [
     },
 ]
 
-test_sort_list = TestRunner(test_cases=test_cases, arg_extractor=lambda case: [case['nums']])
+test_sort_list = TstRunner(test_cases=test_cases, arg_extractor=lambda case: [case['nums']])

@@ -1,6 +1,6 @@
 from typing import List
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 
 # Copy this function
@@ -26,7 +26,13 @@ test_cases = [
         'target': 11,
         'expected': 5,
     },
+    {
+        'nums': list(range(0, 10000000)),
+        'target': 9999998,
+        'expected': 9999998,
+        'timeout': 1,
+    },
 ]
 
-test_find_value_index = TestRunner(test_cases=test_cases,
-                                   arg_extractor=lambda case: [case['nums'], case['target']])
+test_find_value_index = TstRunner(test_cases=test_cases,
+                                  arg_extractor=lambda case: [case['nums'], case['target']])

@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 # Copy this function
 def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
@@ -50,6 +50,6 @@ test_cases = [
     },
 ]
 
-test_two_sum = TestRunner(test_cases=test_cases,
-                          evaluator=lambda a, e: set(a) == set(e),
-                          arg_extractor=lambda dict: [dict['nums'], dict['target']])
+test_two_sum = TstRunner(test_cases=test_cases,
+                         evaluator=lambda a, e: set(a) == set(e),
+                         arg_extractor=lambda dict: [dict['nums'], dict['target']])

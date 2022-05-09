@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from utilities.test_runner import TestRunner
+from utilities.test_runner import TstRunner
 
 # Copy this function definition
 def most_common_element(elements: List[Any]) -> List[Any]:
@@ -32,5 +32,5 @@ test_cases = [
     },
 ]
 
-test_most_common_element = TestRunner(test_cases=test_cases,
-                                      arg_extractor=lambda dict: [dict['elements']])
+test_most_common_element = TstRunner(test_cases=test_cases,
+                                     arg_extractor=lambda dict: [dict['elements']])
