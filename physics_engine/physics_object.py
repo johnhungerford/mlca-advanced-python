@@ -16,8 +16,8 @@ class PhysicsObject:
         self.pos_x = pos_x
         self.vel_x = vel_x
 
-    def update_pos(self):
-            self.pos_x += self.vel_x
+    def update_pos(self, delta_t):
+            self.pos_x += self.vel_x * delta_t
 
 class ui:
     def __init__(self, width):
@@ -39,7 +39,7 @@ class ui:
 
 
 
-
+"""
 # TERMINAL UI        
 point = PhysicsObject(int(WIDTH/2), 0)
 canvas = ui(WIDTH)
@@ -88,7 +88,7 @@ while running:
             
     point.update_pos()
     canvas.draw(point.pos_x)
-
+"""
     
     
     
