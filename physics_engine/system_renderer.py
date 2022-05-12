@@ -78,8 +78,11 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
         self.line_length = line_length
         self.range_x = [vis_pos_x_min, vis_pos_x_max]
 
-    def render_current_frame(self) -> None:
+    def generate_current_frame(self) -> str:
         pass
+
+    def render_current_frame(self) -> None:
+        print(self.generate_current_frame())
 
     def set_next_frame(self, delta_t_calc_sec: float, delta_t_frame_sec: float) -> None:
         pass
