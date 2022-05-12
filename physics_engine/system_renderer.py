@@ -61,7 +61,7 @@ class PhysicsSystemRenderer(abc.ABC):
 class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
     """
     Simple implementation of SystemRenderer (see above) that renders a frame by printing a line of text
-    where "#" represents an object.
+    where "#" represents an object (everything else should be empty space).
     """
 
     def __init__(self,
@@ -79,7 +79,7 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
         self.range_x = [vis_pos_x_min, vis_pos_x_max]
 
     def generate_current_frame(self) -> str:
-        pass
+        return "     #     "
 
     def render_current_frame(self) -> None:
         print(self.generate_current_frame())
