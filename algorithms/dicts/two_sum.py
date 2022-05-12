@@ -37,16 +37,19 @@ test_cases = [
         'nums': [i for i in range(0, 10001)],
         'target': 19999,
         'expected': (9999, 10000),
+        'timeout': 10,
     },
     {
         'nums': [i for i in range(0, 20001)],
         'target': 39999,
         'expected': (19999, 20000),
+        'timeout': 100,
     },
     {
         'nums': [i for i in range(0, 1000001)],
         'target': 1999999,
         'expected': (999999, 1000000),
+        'timeout': 500,
     },
 ]
 

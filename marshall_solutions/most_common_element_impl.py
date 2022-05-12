@@ -26,8 +26,8 @@ def most_common_element(elements: List[Any]) -> List[Any]:
             
         elif vals[element] == most_common:
             list_vals.append(element)         
-                       
-            
+
     return list_vals
+
 
 test_most_common_element.run_on(most_common_element)
