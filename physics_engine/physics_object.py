@@ -29,4 +29,4 @@ class PhysicsObject:
         can be calculated from the force and mass using the helper function `acceleration_from_force_and_mass`.
         """
         self.pos_x += self.vel_x * delta_t  # marshall already did this
-        self.vel_x = self.vel_x + (self.acceleration_from_force_and_mass() * delta_t)
+        self.vel_x = self.vel_x + (acceleration_from_force_and_mass(total_force, self.mass) * delta_t)
