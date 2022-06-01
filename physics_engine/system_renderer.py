@@ -2,6 +2,8 @@ import abc
 
 from physics_engine.physics_system import PhysicsSystem
 
+def replace_str_index(text,index=0,replacement='#'):
+    return '%s%s%s'%(text[:index],replacement,text[index+1:])
 
 class PhysicsSystemRenderer(abc.ABC):
     """
@@ -61,7 +63,7 @@ class PhysicsSystemRenderer(abc.ABC):
 class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
     """
     Simple implementation of SystemRenderer (see above) that renders a frame by printing a line of text
-    where "#" represents an object.
+    where "#" represents an object (everything else should be empty space).
     """
 
     def __init__(self,
@@ -79,7 +81,22 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
         self.range_x = [vis_pos_x_min, vis_pos_x_max]
 
     def generate_current_frame(self) -> str:
-        pass
+        
+        frame  = self.line_length * " "
+        new_frame = ""
+        act_idx = 0
+        act_range = self.range_x[1] - self.range_x[0]
+        for phys_object in  self.system.physics_objects:
+            if phys_object.pos_x <= self.range_x[1] and phys_object.pos_x >= self.range_x[0]:
+                act_idx = int(round(phys_object.pos_x - self.range_x[0]) * (self.line_length - 1)/act_range)
+                new_frame = replace_str_index(frame, act_idx)
+                frame = new_frame
+
+        return frame
+        
+        
+ 
+        
 
     def render_current_frame(self) -> None:
         print(self.generate_current_frame())
