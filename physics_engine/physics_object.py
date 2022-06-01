@@ -6,7 +6,7 @@ def acceleration_from_force_and_mass(force: float, mass: float) -> float:
     Use this method to calculate the acceleration of an object from the current force
     on that object and the object's mass
     """
-    pass
+    return force / mass 
 
 
 class PhysicsObject:
@@ -29,3 +29,4 @@ class PhysicsObject:
         can be calculated from the force and mass using the helper function `acceleration_from_force_and_mass`.
         """
         self.pos_x += self.vel_x * delta_t  # marshall already did this
+        self.vel_x = self.vel_x + (acceleration_from_force_and_mass(total_force, self.mass) * delta_t)
