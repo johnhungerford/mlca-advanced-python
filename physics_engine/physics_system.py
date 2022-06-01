@@ -20,4 +20,4 @@ class PhysicsSystem:
     def update_state(self, delta_t: float):
         for physics_object in self.physics_objects:
             for physics_field in self.physics_fields: 
-                physics_object.update_state(delta_t, physics_field.force_x(physics_field))
+                physics_object.update_state(delta_t, physics_field.force_x(physics_object))
