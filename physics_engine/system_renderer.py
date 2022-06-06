@@ -1,4 +1,6 @@
 import abc
+import math
+import time
 
 from physics_engine.physics_system import PhysicsSystem
 
@@ -29,35 +31,36 @@ class PhysicsSystemRenderer(abc.ABC):
         """
         pass
 
-    @abc.abstractmethod
-    def set_next_frame(self, delta_t_calc_sec: float, delta_t_frame_sec: float) -> None:
-        """
-        Update system state for the next frame, calculating all changes of position over delta_t_calc_sec intervals,
-        after a larger interval of delta_t_frame_sec. Note that delta_t_calc_sec must be <= delta_t_frame_sec
-        """
-
-    @abc.abstractmethod
-    def render_time_interval(self, delta_t_calc_sec: float, delta_t_frame_sec: float, total_t_sec: float) -> None:
-        """
-        Render movement over total_t_sec seconds, with delta_t_calc_sec intervals to calculate changes of position
-        and delta_t_frame_sec seconds between rendered frames
-        """
+    def set_next_frame(self, delta_t_frame_sec: float, num_calcs_per_frame: int) -> None:
         pass
 
-    @abc.abstractmethod
-    def render_frames(self, delta_t_calc_sec: float, delta_t_frame_sec: float, total_frames: int) -> None:
-        """
-        Render movement over total_frames frames, with delta_t_calc_sec intervals to calculate changes of position
-        and delta_t_frame_sec seconds between rendered frames
-        """
-        pass
+    def time_next_frame(self, delta_t_frame_sec: float = 0.25, num_calcs_per_frame: int = 1) -> None:
+        start_ts = time.time()
+        self.set_next_frame(delta_t_frame_sec, num_calcs_per_frame)
+        end_ts = time.time()
+        so_far = end_ts - start_ts
+        remaining = delta_t_frame_sec - so_far
+        if remaining < 0:
+            print(f"Unable to keep up with framerate: lost {-remaining} seconds")
+            return
+        time.sleep(remaining)
 
-    @abc.abstractmethod
-    def render_continually(self, delta_t_calc_sec: float, delta_t_frame_sec: float) -> None:
-        """
-        Render continually, calculating delta_t_calc_sec intervals of motion and rendering position every
-        delta_t_frame_sec seconds
-        """
+    def render_continually(self, delta_t_frame_sec: float = 0.25, num_calcs_per_frame: int = 1) -> None:
+        self.render_current_frame()
+        while True:
+            self.time_next_frame(delta_t_frame_sec, num_calcs_per_frame)
+            self.render_current_frame()
+
+    def render_frames(self, total_frames: int, delta_t_frame_sec: float = 0.25, num_calcs_per_frame: int = 1) -> None:
+        self.render_current_frame()
+        for i in range(0, total_frames):
+            self.time_next_frame(delta_t_frame_sec, num_calcs_per_frame)
+            self.render_current_frame()
+
+    def render_time_interval(self, total_t_sec: float, delta_t_frame_sec: float = 0.25,
+                             num_calcs_per_frame: int = 1) -> None:
+        num_frames = math.floor(total_t_sec / delta_t_frame_sec)
+        self.render_frames(num_frames, delta_t_frame_sec, num_calcs_per_frame)
 
 
 class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
@@ -68,10 +71,10 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
 
     def __init__(self,
                  system: PhysicsSystem,
-                 seconds_per_time_unit: float,
-                 line_length: int,
-                 vis_pos_x_min: float,
-                 vis_pos_x_max: float):
+                 line_length: int = 100,
+                 vis_pos_x_min: float = 0,
+                 vis_pos_x_max: float = 100,
+                 seconds_per_time_unit: float = 1):
         # Use the base class constructor to pass the system and the time unit conversion
         super().__init__(system, seconds_per_time_unit)
         # We also need to establish:
@@ -93,22 +96,7 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
                 frame = new_frame
 
         return frame
-        
-        
- 
-        
 
     def render_current_frame(self) -> None:
         print(self.generate_current_frame())
 
-    def set_next_frame(self, delta_t_calc_sec: float, delta_t_frame_sec: float) -> None:
-        pass
-
-    def render_time_interval(self, delta_t_calc_sec: float, delta_t_frame_sec: float, total_t_sec: float) -> None:
-        pass
-
-    def render_frames(self, delta_t_calc_sec: float, delta_t_frame_sec: float, total_frames: int) -> None:
-        pass
-
-    def render_continually(self, delta_t_calc_sec: float, delta_t_frame_sec: float) -> None:
-        pass
