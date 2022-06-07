@@ -9,6 +9,7 @@ def most_common_element(elements: List[Any]) -> List[Any]:
     there are three 0s, three 3s, two 2s, one 1 and one 4, so the correct solution is [0, 3]
     or [3, 0].
     """
+<<<<<<< HEAD
     #I created a dictionary because I wanted to store not only the number of times a value appears, 
     # but also the value itself at the same time
     countPerItem = {}
@@ -31,6 +32,27 @@ def most_common_element(elements: List[Any]) -> List[Any]:
             #rtrnVals.append(l)
     rtrnVals += countPerItem.keys()[countPerItem.index(k)]
     #we return the key(s) associated with this value
+=======
+    #Creates a dictionary store the item and the frequency of occurence
+    ModeDict = {}
+    
+    #Iteration over all the items so they can be counted next
+    for i in range(len(List)):
+        #Count the frequency with which item at index i appears in the list
+        ModeDict[List[i]]=List.count(List[i])
+
+    #Combine all the frequencies into a list so can find the greatest
+    listkeys=[]
+    for i in ModeDict:
+        listkeys.append(ModeDict[i])
+
+
+    for i in listkeys:
+        pass
+    return None
+
+
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
 
     return [rtnrVals]
     #return None
