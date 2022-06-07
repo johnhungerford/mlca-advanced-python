@@ -9,15 +9,21 @@ def two_sum(nums: List[int], target: int) -> Tuple[int, int]:
     indices of the two elements in any order.
     """
 <<<<<<< HEAD
+<<<<<<< HEAD
     for i in List:
         for j in list:
             if i+j==target:
                 return i,j
 =======
+=======
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
     for i in nums:
         for j in nums:
             if i+j==target:
                 return (i,j)
+<<<<<<< HEAD
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
+=======
 >>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
     
 

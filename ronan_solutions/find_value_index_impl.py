@@ -9,6 +9,7 @@ def find_value_index(nums: List[int], target: int) -> int:
        target value. If it finds the value it returns its index. If it does not
        find the value, it returns the index where that value would be if it were in the list"""
 <<<<<<< HEAD
+<<<<<<< HEAD
     for i in range(len(List)):
         if List[i] == target:
             return i
@@ -16,10 +17,15 @@ def find_value_index(nums: List[int], target: int) -> int:
             return i+1
             
 =======
+=======
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
     for i in range(0, len(nums)):
         if target <= nums[i]:
             return i
     return len(nums)
+<<<<<<< HEAD
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
+=======
 >>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
 
 
