@@ -11,6 +11,7 @@ def most_common_element(elements: List[Any]) -> List[Any]:
     """
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     #I created a dictionary because I wanted to store not only the number of times a value appears, 
     # but also the value itself at the same time
     countPerItem = {}
@@ -36,6 +37,8 @@ def most_common_element(elements: List[Any]) -> List[Any]:
 =======
 =======
 >>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
+=======
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
     #Creates a dictionary store the item and the frequency of occurence
     ModeDict = {}
     
@@ -44,7 +47,22 @@ def most_common_element(elements: List[Any]) -> List[Any]:
         #Count the frequency with which item at index i appears in the list
         ModeDict[List[i]]=List.count(List[i])
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+    #Combine all the frequencies into a list so can find the greatest
+    listkeys=[]
+    for i in ModeDict:
+        listkeys.append(ModeDict[i])
+
+
+    for i in listkeys:
+        pass
+    return None
+
+
+>>>>>>> 42284cd85e21cf0a866b17ad88f37c9bdf5091f5
 
     #Combine all the frequencies into a list so can find the greatest
     listkeys=[]
