@@ -34,7 +34,7 @@ class PhysicsSystemRenderer(abc.ABC):
     def set_next_frame(self, delta_t_frame_sec: float, num_calcs_per_frame: int) -> None:
         delta_time =  (delta_t_frame_sec / num_calcs_per_frame) * self.time_unit_per_second
         for calc in range(0, num_calcs_per_frame):
-            system.update_state(delta_time)
+            self.system.update_state(delta_time)
 
     def time_next_frame(self, delta_t_frame_sec: float = 0.25, num_calcs_per_frame: int = 1) -> None:
         start_ts = time.time()
