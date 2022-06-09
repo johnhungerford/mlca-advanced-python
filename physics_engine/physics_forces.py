@@ -29,11 +29,12 @@ class GravitationalPhysicsField(PhysicsField):
     This is made possible by dividing by the object's mass.
     """
 
-    def __init__(self, force_x_per_mass: float):
+    def __init__(self, force_x_per_mass: float, positive: bool = True):
         self.force_x_per_mass: float = force_x_per_mass
+        self.positive: bool = positive
 
     def force_x(self, physics_object: PhysicsObject) -> float:
-        return self.force_x_per_mass / physics_object.mass
+        return (1 if self.positive else -1) * self.force_x_per_mass * physics_object.mass
 
 
 class PhysicsInteraction(abc.ABC):
@@ -74,7 +75,11 @@ class ElectricChargeInteraction(PhysicsInteraction):
     def force_x(self, acted_upon: PhysicsObject, actor: PhysicsObject) -> float:
         """Force between two charge particles is -charge_1 * charge_2 / (distance ^ 2) multipled by some constant"""
         distance = acted_upon.pos_x - actor.pos_x
-        return - self.force_charge_constant * (acted_upon.properties['charge'] * actor.properties['charge']) / (distance * distance)
+        if distance > 0:
+            return self.force_charge_constant * (acted_upon.properties['charge'] * actor.properties['charge']) / (distance * distance)
+        elif distance < 0:
+            return - self.force_charge_constant * (acted_upon.properties['charge'] * actor.properties['charge']) / (distance * distance)
+        return 0
 
 
 class GravitationalInteraction(PhysicsInteraction):
