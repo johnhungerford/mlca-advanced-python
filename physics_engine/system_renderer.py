@@ -1,5 +1,6 @@
 import abc
 import math
+import sys
 import time
 
 from physics_engine.physics_system import PhysicsSystem
@@ -100,5 +101,5 @@ class Ascii1DPhysicsSystemRenderer(PhysicsSystemRenderer):
         return frame
 
     def render_current_frame(self) -> None:
-        print(self.generate_current_frame())
-
+        sys.stdout.write('\r'+self.generate_current_frame())
+        sys.stdout.flush()
